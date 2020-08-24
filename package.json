@@ -1,0 +1,35 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "draganpetos.com",
+  "author": "Dragan Petos",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist/",
+    "copy": "copyfiles -f 'source/**/*.png' dist/",
+    "reload": "browser-sync reload",
+    "serve": "browser-sync start -s 'dist'",
+    "watch:css": "onchange 'source/**/*.css' -- run-s build:css reload",
+    "watch:html": "onchange 'source/**/*.html' -- run-s build:html reload",
+    "watch": "run-p watch:css watch:html serve",
+    "build:css": "postcss source/css/style.css -o dist/css/style.css",
+    "build:html": "html-minifier --input-dir 'source' --output-dir 'dist' --collapse-whitespace --file-ext html",
+    "build": "run-s clean copy build:html build:css",
+    "start": "run-s clean copy build:html build:css watch"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.12",
+    "copyfiles": "^2.3.0",
+    "cssnano": "^4.1.10",
+    "html-minifier": "^4.0.0",
+    "mkdirp": "^1.0.4",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.0.2",
+    "onchange": "^7.0.2",
+    "postcss-cli": "^7.1.1",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-pxtorem": "^5.1.1",
+    "rimraf": "^3.0.2"
+  }
+}

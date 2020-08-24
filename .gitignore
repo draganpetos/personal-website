@@ -1,0 +1,15 @@
+# dir
+
+node_modules
+design
+dist
+
+# files
+
+*.log
+.DS_Store
+.env
+.vscode
+
+# Local Netlify folder
+.netlify
